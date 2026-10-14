@@ -1,0 +1,34 @@
+# Web application security with OWASP Juice Shop: an online shop that is insecure on purpose.
+#
+# Your copy of the shop is the only thing you may attack, and it is the only thing you can
+# reach: this lab has no way out to the internet, so nothing you try can touch anybody
+# else's machine. Never point a tool at a site you do not own, in a lab or anywhere else.
+#
+# Press Open on the lab's page to see the shop. Find the Score Board (it is not linked; the
+# first challenge is finding it), then work through the challenges by difficulty. Each one
+# turns green when you solve it. To keep your place, copy the continue code the Score Board
+# offers: the shop's memory is cleared when the lab stops.
+#
+# Hand in screenshots of the solved challenges and, for each, a paragraph saying what the
+# weakness is, why it works and how the code should have been written.
+#
+# The image runs as an unprivileged account and needs no capabilities.
+
+services:
+  juice-shop:
+    image: bkimminich/juice-shop:v20.3.0
+    user: "65532"
+    expose: ["3000"]
+    # The image has no shell, so the check is the node it ships.
+    healthcheck:
+      test: ["CMD", "/nodejs/bin/node", "-e", "fetch('http://127.0.0.1:3000/rest/admin/application-version').then((r) => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"]
+      interval: 3s
+      timeout: 5s
+      retries: 60
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    labels:
+      lab.title: OWASP Juice Shop
+      lab.open: "3000"
