@@ -45,31 +45,36 @@ You need Docker with the Compose plugin. The first start downloads the images.
 docker compose -f compose.yaml -f local.yaml up
 ```
 
-{c["local_open"]}
+Open <http://localhost:3000> for the shop.
 
 `local.yaml` publishes the ports on `127.0.0.1` only, so the lab is reachable from your own computer and from nowhere else. Stop it with `Ctrl-C`, and remove it with `docker compose -f compose.yaml -f local.yaml down -v`. Run it on a machine you are happy to attack from: the application is insecure on purpose.
 
 ## Working through it
 
-{c["working"]}
+1. **Open the shop** (on the platform, press **Open** on the lab's page) and look around as a customer would: register, add things to the basket, read the reviews.
+2. **Find the Score Board.** It lists every challenge by difficulty and turns each green when it is solved, and it is not linked from anywhere: finding it is the first challenge.
+3. **Work up by difficulty.** The challenges cover the OWASP Top 10: injection, broken authentication, broken access control, cross-site scripting, security misconfiguration and more. Look at what the browser sends and receives, read what the page's own code does, and ask of every input what the program trusts about it. The Score Board's hints go further, and a student who has tried first learns more from them.
+4. **Keep your place.** The shop forgets its state when the lab stops, so a student who will carry on tomorrow copies the **continue code** the Score Board offers.
 
 ## For teachers
 
 Nothing in this lab is marked automatically. The student hands in evidence and you mark it, the way you mark any other lab.
 
-**Ask for evidence in two halves.** First, proof of the work: {c["proof"]}, with the lab's own address visible in the browser so it is clearly their copy. Second, the understanding: for each one, a written explanation in their own words of what the weakness is, the exact input they used and why it worked, what an attacker could do with it, and how the code should have been written. The second half tells you whether it was understood or copied from a walkthrough. For stronger work ask for the fix as well as the attack.
+**Ask for evidence in two halves.** First, proof of the work: a screenshot of the solved challenges on the Score Board, with the lab's own address visible in the browser so it is clearly their copy. Second, the understanding: for each one, a written explanation in their own words of what the weakness is, the exact input they used and why it worked, what an attacker could do with it, and how the code should have been written. The second half tells you whether it was understood or copied from a walkthrough. For stronger work ask for the fix as well as the attack.
 
-**Where it sits in a course.** {c["course"]} Check your own awarding body's unit for the exact wording; none is quoted here.
+**Where it sits in a course.** Juice Shop suits the OWASP Top 10 in a realistic application: threats and vulnerabilities, injection, authentication and session weaknesses, access control, cryptographic failures and security misconfiguration, and vulnerability assessment as a method. It also supports the legal and ethical side of a unit: authorisation and scope, the Computer Misuse Act 1990 and responsible disclosure. Check your own awarding body's unit for the exact wording; none is quoted here.
 
 **Who sees what.** These labs are often used with students aged 16 and 17. A copy is private to the student who started it. A member of staff who teaches the module can open it to see what the student has done, and opening a student's work is written to the access log, which the student can read.
 
 ## What does not work in a lab
 
-{c["limits"]}
+A small number of challenges need the internet or an AI service, and cannot be solved in a lab, which has no way out. The shop's state is kept in memory, so it is gone when the lab stops: use the continue code to carry on. It is given 512 MB.
 
 ## Troubleshooting
 
-{c["trouble"]}
+- **The shop does not open straight after Start.** Wait a few seconds and press Open again: the lab reports itself ready only once the shop answers.
+- **On your own machine, port 3000 is already in use.** Change the left-hand number in `local.yaml`, for example `127.0.0.1:3001:3000`, and open that port instead.
+- **A challenge needs the internet.** It cannot be solved here, by design.
 
 ## Checking the lab
 
@@ -81,7 +86,7 @@ test/check.sh
 
 ## Versions and licences
 
-{c["licences"]}
+[OWASP Juice Shop](https://github.com/juice-shop/juice-shop) is MIT licensed. The image is `bkimminich/juice-shop:v20.3.0`.
 
 The compose file, the tests and this documentation are MIT licensed, see [LICENSE](LICENSE): copy it, change it, teach with it. The application inside is the licence of its own project, linked above.
 
