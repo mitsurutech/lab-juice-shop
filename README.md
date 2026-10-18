@@ -1,5 +1,7 @@
 # OWASP Juice Shop lab with Docker Compose: learn web application security by attacking an insecure online shop
 
+[English](README.md) | [Français](README.fr.md) | [日本語](README.ja.md) | [Español](README.es.md)
+
 [![check](https://github.com/mitsurutech/lab-juice-shop/actions/workflows/check.yml/badge.svg)](https://github.com/mitsurutech/lab-juice-shop/actions/workflows/check.yml)
 
 A ready-made **web application security lab** for classrooms, from the [MitsuruTech Learning Platform](https://mitsurutech.co.uk/learning), where schools and colleges give every student their own databases, containers and terminal in the browser. Each student gets their own copy of **OWASP Juice Shop**, an online shop that is insecure on purpose, with around a hundred challenges across the [OWASP Top 10](https://owasp.org/www-project-top-ten/): injection, broken authentication, broken access control, cross-site scripting, security misconfiguration and more. They find the weaknesses, **explain why each works and how the code should have been written**, and hand in evidence, with nothing installed and no risk to anybody else's machine.
@@ -84,11 +86,13 @@ A small number of challenges need the internet or an AI service, and cannot be s
 test/check.sh
 ```
 
-## Versions and licences
+## Versions and third-party licences
 
 [OWASP Juice Shop](https://github.com/juice-shop/juice-shop) is MIT licensed. The image is `bkimminich/juice-shop:v20.3.0`.
 
-The compose file, the tests and this documentation are MIT licensed, see [LICENSE](LICENSE): copy it, change it, teach with it. The application inside is the licence of its own project, linked above.
+## Licence
+
+This work is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). You may share it and adapt it for learning and teaching, if you credit Mitsuru Technologies Ltd, do not use it commercially, and share anything you make from it under the same licence. The full text is in the `LICENSE` file. It covers the compose file, the tests and this documentation. The application inside keeps the licence of its own project, linked above.
 
 ## About
 
